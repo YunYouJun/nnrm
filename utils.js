@@ -18,10 +18,10 @@ function dashline(str, len) {
 /**
  * Show all npm registries
  */
-async function listRegistry() {
+async function listRegistry(pkgManager = "npm") {
   let list = "";
 
-  const currentRegistries = await getCurrentRegistry();
+  const currentRegistries = await getCurrentRegistry(pkgManager);
   keys.forEach((key) => {
     const isCurrentRegistry = key === currentRegistries;
     const prefix = isCurrentRegistry ? "*" : " ";

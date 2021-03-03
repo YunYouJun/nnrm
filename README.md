@@ -14,13 +14,37 @@ npm install -g nnrm
 
 ## Usage
 
+`nnrm` & `nrm` is used to toggle npm registry.
+
+`nyrm` & `yrm` is used to toggle yarn registry.
+
 ```sh
 nnrm ls
+# nrm ls
+# yrm ls
 nnrm use taobao
+# nrm use taobao
+# yrm use taobao
+nnrm test
+# nrm test
+# yrm test
 ```
 
 - `nnrm -h`: show help message
-- `nnrm test`: show registry delay time
+
+```bash
+Usage:
+  $ nrm <command> [options]
+
+Commands:
+  ls              List all the registries
+  use [registry]  Change registry
+  test            Show response time for all registries
+
+Options:
+  -h, --help     Display this message
+  -v, --version  Display version number
+```
 
 ## Base
 
