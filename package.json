@@ -1,0 +1,26 @@
+{
+  "name": "nnrm",
+  "version": "0.0.1",
+  "description": "New npm registry manager.",
+  "main": "index.js",
+  "bin": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": "https://github.com/YunYouJun/nnrm",
+  "author": {
+    "email": "me@yunyoujun.cn",
+    "name": "YunYouJun",
+    "url": "https://www.yunyoujun.cn"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "cac": "^6.7.2",
+    "chalk": "^4.1.0",
+    "execa": "^5.0.0",
+    "node-fetch": "^2.6.1"
+  }
+}
