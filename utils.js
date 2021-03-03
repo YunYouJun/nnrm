@@ -111,4 +111,5 @@ module.exports = {
   listRegistry,
   listDelayTime,
   setCurrentRegistry,
+  main,
 };
