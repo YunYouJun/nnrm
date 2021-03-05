@@ -1,6 +1,6 @@
 {
   "name": "nnrm",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "New npm registry manager.",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,7 @@
     "yrm": "yrm.js"
   },
   "engines": {
-    "node": "14.x"
+    "node": ">=12.x"
   },
   "repository": "https://github.com/YunYouJun/nnrm",
   "author": {
