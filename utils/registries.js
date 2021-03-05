@@ -40,6 +40,12 @@ function setCustomRegistry(registries) {
  */
 function addCustomRegistry(name, url, home) {
   let customRegistries = getCustomRegistry();
+
+  // npm config set registry auto add '/'
+  if (url.slice(-1) !== "/") {
+    url += "/";
+  }
+
   customRegistries[name] = {
     home,
     registry: url,
