@@ -4,6 +4,8 @@ New npm registry manager.
 
 Use smaller dependencies than [nrm](https://github.com/Pana/nrm).
 
+> [中文简介](https://www.yunyoujun.cn/posts/nnrm-new-nrm/)
+
 ## Install
 
 ```sh

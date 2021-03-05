@@ -1,6 +1,6 @@
 {
   "name": "nnrm",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "New npm registry manager.",
   "main": "index.js",
   "bin": {
@@ -24,7 +24,8 @@
     "ls": "node index.js ls",
     "test": "node index.js test",
     "test:add": "node index.js add yyj https://www.yunyoujun.cn",
-    "test:remove": "node index.js remove yyj"
+    "test:remove": "node index.js remove yyj",
+    "postinstall": "node index.js ls"
   },
   "dependencies": {
     "cac": "^6.7.2",

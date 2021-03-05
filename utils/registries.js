@@ -15,12 +15,12 @@ function getCustomRegistry() {
       NNRM_REGISTRIES
     )}' to record your custom registries.`;
     console.log(msg);
-  }
 
-  if (!fs.existsSync(NNRM)) {
-    fs.mkdirSync(NNRM, { recursive: true });
+    if (!fs.existsSync(NNRM)) {
+      fs.mkdirSync(NNRM, { recursive: true });
+    }
+    setCustomRegistry(customRegistries);
   }
-
   return customRegistries;
 }
 
