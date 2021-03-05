@@ -1,6 +1,6 @@
 {
   "name": "nnrm",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "New npm registry manager.",
   "main": "index.js",
   "bin": {
@@ -20,7 +20,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "node index.js"
+    "ls": "node index.js ls",
+    "test": "node index.js test",
+    "test:add": "node index.js add yyj https://www.yunyoujun.cn",
+    "test:remove": "node index.js remove yyj"
   },
   "dependencies": {
     "cac": "^6.7.2",

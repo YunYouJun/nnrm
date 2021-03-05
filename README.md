@@ -37,16 +37,51 @@ Usage:
   $ nrm <command> [options]
 
 Commands:
-  ls              List all the registries
-  use [registry]  Change registry
-  test            Show response time for all registries
+  ls                           List all the registries
+  use [registry]               Change registry
+  test                         Show response time for all registries
+  add <registry> <url> [home]  Add a custom registry
+  remove <registry>            Remove a custom registry
 
 Options:
   -h, --help     Display this message
   -v, --version  Display version number
 ```
 
-## Base
+### Add custom registry
+
+```sh
+nnrm add example https://xxx.com
+# nnrm remove example
+```
+
+It will be recorded in your `~/.nnrm/registries.json`.
+
+### Default Registires
+
+- npm -------- <https://registry.npmjs.org/>
+- yarn ------- <https://registry.yarnpkg.com/>
+- taobao ----- <https://registry.npm.taobao.org/>
+- tencent ---- <https://mirrors.cloud.tencent.com/npm/>
+- npmMirror -- <https://skimdb.npmjs.com/registry/>
+- github ----- <https://npm.pkg.github.com/>
+
+## Features
+
+- use node-fetch instead of request for speed test
+- use execa instead of npm
+- use cac instead of commander
+- asynchronously display source speed test results
+- colorful info
+- support npm and yarn
+
+## FAQ
+
+### Why new nrm?
+
+nrm relies on the deprecated `request` with a larger package body, the `npm` package, and some other npm dependencies.
+
+So installing nrm is also a very slow thing.
 
 ### Why cac?
 
