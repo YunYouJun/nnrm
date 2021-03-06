@@ -1,5 +1,8 @@
 # nnrm
 
+[![npm](https://img.shields.io/npm/v/nnrm)](https://www.npmjs.com/package/nnrm)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yunyoujun/nnrm)
+
 New npm registry manager.
 
 Use smaller dependencies than [nrm](https://github.com/Pana/nrm).
