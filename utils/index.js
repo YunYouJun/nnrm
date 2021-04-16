@@ -96,6 +96,10 @@ async function getDelayTime(url) {
     });
 }
 
+/**
+ * list registries delay time
+ * @returns
+ */
 async function listDelayTime() {
   return await Promise.all(
     Object.keys(registries).map(async (key) => {

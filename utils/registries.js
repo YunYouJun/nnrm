@@ -2,22 +2,31 @@ const fs = require("fs");
 const path = require("path");
 
 const chalk = require("chalk");
+const execa = require("execa");
 
 const NNRM = path.join(process.env.HOME, ".nnrm");
 const NNRM_REGISTRIES = path.join(NNRM, "registries.json");
 
-function getCustomRegistry() {
+async function getCustomRegistry() {
   let customRegistries = {};
   try {
     customRegistries = require(NNRM_REGISTRIES);
   } catch (e) {
     const msg = `\nWe will create '${chalk.yellow(
       NNRM_REGISTRIES
-    )}' to record your custom registries.`;
+    )}' to record your custom registries.\n`;
     console.log(msg);
 
     if (!fs.existsSync(NNRM)) {
-      fs.mkdirSync(NNRM, { recursive: true });
+      try {
+        fs.mkdirSync(NNRM, { recursive: true });
+      } catch (e) {
+        // permission denied
+        console.log(e.message);
+        await execa("mkdir", [NNRM]).catch((e) => {
+          console.log(e.message);
+        });
+      }
     }
     setCustomRegistry(customRegistries);
   }
