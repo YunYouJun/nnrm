@@ -69,7 +69,7 @@ nnrm add example https://xxx.com
 nrm remove example
 ```
 
-它将会被记录在你的 `~/.nnrm/registries.json`.
+它将会被记录在你的 `~/.nnrm/registries.json`。
 
 ### 默认源
 
@@ -127,8 +127,12 @@ cac(3.6KB) 相比 commander(6.8KB) 更小。~~并且它的名字取自我喜爱�
 
 > [execa vs shelljs](https://www.npmtrends.com/execa-vs-shelljs)
 
-[execa](https://github.com/sindresorhus/execa) 大小仅仅 8.4KB.
+[execa](https://github.com/sindresorhus/execa) 大小仅仅 8.4KB。
 
 安装 [npm](https://www.npmjs.com/package/npm) 包来使用 `npm.config.set('registry', 'xxx')` 的代价是十分昂贵的。
 
 我们只需要执行本地的命令: `npm config set registry xxx`。
+
+### Windows 报错？
+
+如果您是 Windows 用户，您可能需要确保你使用 `bash` 等类 UNIX 通用命令行（而非 CMD）。
