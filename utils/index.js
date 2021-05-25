@@ -13,7 +13,8 @@ const {
 
 // init default and custom registries
 const defaultRegistries = require("../registries.json");
-let registries = getAllRegistries();
+// init in main
+let registries;
 
 /**
  * generate equal width name with dashline
@@ -32,8 +33,8 @@ function dashline(str) {
  * get default and custom registries
  * @returns
  */
-function getAllRegistries() {
-  const customRegistries = getCustomRegistry();
+async function getAllRegistries() {
+  const customRegistries = await getCustomRegistry();
   return Object.assign({}, defaultRegistries, customRegistries);
 }
 
@@ -113,7 +114,10 @@ async function listDelayTime() {
 /**
  * @param {string} pkgManager npm|yarn
  */
-function main(pkgManager) {
+async function main(pkgManager) {
+  // init
+  registries = await getAllRegistries();
+
   cli.command("ls", "List all the registries").action(async () => {
     await listRegistries(pkgManager);
   });

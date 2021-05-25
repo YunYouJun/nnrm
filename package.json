@@ -1,6 +1,6 @@
 {
   "name": "nnrm",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "New npm registry manager.",
   "main": "index.js",
   "bin": {
@@ -28,8 +28,8 @@
     "postinstall": "node index.js ls"
   },
   "dependencies": {
-    "cac": "^6.7.2",
-    "chalk": "^4.1.0",
+    "cac": "^6.7.3",
+    "chalk": "^4.1.1",
     "execa": "^5.0.0",
     "node-fetch": "^2.6.1"
   }

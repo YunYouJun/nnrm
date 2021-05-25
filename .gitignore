@@ -1,5 +1,8 @@
 .DS_Store
 node_modules/
 logs/
+
+# lock
 package-lock.json
 yarn.lock
+pnpm-lock.yaml

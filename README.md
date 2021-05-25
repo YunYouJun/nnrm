@@ -1,13 +1,17 @@
 # nnrm
 
+English Docs | [中文文档](./README.zh-CN.md)
+
 [![npm](https://img.shields.io/npm/v/nnrm)](https://www.npmjs.com/package/nnrm)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yunyoujun/nnrm)
+
+> nnrm = new nrm
 
 New npm registry manager.
 
 Use smaller dependencies than [nrm](https://github.com/Pana/nrm).
 
-> [中文简介](https://www.yunyoujun.cn/posts/nnrm-new-nrm/)
+> [由来](https://www.yunyoujun.cn/posts/nnrm-new-nrm/)
 
 ## Install
 
@@ -53,11 +57,14 @@ Options:
   -v, --version  Display version number
 ```
 
-### Add custom registry
+### Add/Remove custom registry
 
-```sh
+```bash
 nnrm add example https://xxx.com
-# nnrm remove example
+```
+
+```bash
+nnrm remove example
 ```
 
 It will be recorded in your `~/.nnrm/registries.json`.
@@ -73,12 +80,14 @@ It will be recorded in your `~/.nnrm/registries.json`.
 
 ## Features
 
-- use node-fetch instead of request for speed test
-- use execa instead of npm
-- use cac instead of commander
-- asynchronously display source speed test results
-- colorful info
-- support npm and yarn
+- Support `npm` and `yarn`
+- Smaller Dependencies
+  - Use `node-fetch` instead of `request` for speed test
+  - Use `execa` instead of `npm`
+  - Use `cac` instead of `commander`
+- Asynchronously display source speed test results
+- Colorful console info
+- Automatically display the registry list after each modification, and mark the current registry
 
 ## FAQ
 
