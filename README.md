@@ -4,6 +4,9 @@ English Docs | [中文文档](./README.zh-CN.md)
 
 [![npm](https://img.shields.io/npm/v/nnrm)](https://www.npmjs.com/package/nnrm)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yunyoujun/nnrm)
+![npm](https://img.shields.io/npm/dt/nnrm)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/nnrm)
+![Snyk Vulnerabilities for npm scoped package](https://img.shields.io/snyk/vulnerabilities/npm/nnrm)
 
 > nnrm = new nrm
 
