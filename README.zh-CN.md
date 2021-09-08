@@ -23,20 +23,25 @@ npm install -g nnrm
 
 ## 使用
 
-`nnrm` & `nrm` 被用来切换 npm 源。
+以下命令是用来切换对应的包管理工具的源。
 
-`nyrm` & `yrm` 被用来切换 yarn 源。
+- `nnrm` & `nrm`: npm
+- `nyrm` & `yrm`: yarn
+- `prm`: pnpm
 
 ```sh
 nnrm ls
 # nrm ls
 # yrm ls
+# prm ls
 nnrm use taobao
 # nrm use taobao
 # yrm use taobao
+# prm use taobao
 nnrm test
 # nrm test
 # yrm test
+# prm test
 ```
 
 - `nnrm -h`: 显示帮助信息

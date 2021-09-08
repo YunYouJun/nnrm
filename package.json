@@ -1,13 +1,14 @@
 {
   "name": "nnrm",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "New npm registry manager.",
   "main": "index.js",
   "bin": {
     "nnrm": "index.js",
     "nrm": "index.js",
     "nyrm": "yrm.js",
-    "yrm": "yrm.js"
+    "yrm": "yrm.js",
+    "prm": "prm.js"
   },
   "engines": {
     "node": ">=12.x"
@@ -29,8 +30,8 @@
   },
   "dependencies": {
     "cac": "^6.7.3",
-    "chalk": "^4.1.1",
+    "chalk": "^4.1.2",
     "execa": "^5.1.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.2"
   }
 }

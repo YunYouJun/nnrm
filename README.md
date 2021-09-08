@@ -26,20 +26,25 @@ npm install -g nnrm
 
 ## Usage
 
-`nnrm` & `nrm` is used to toggle npm registry.
+These commands are used to toggle the corresponding registry.
 
-`nyrm` & `yrm` is used to toggle yarn registry.
+- `nnrm` & `nrm`: npm
+- `nyrm` & `yrm`: yarn
+- `prm`: pnpm
 
 ```sh
 nnrm ls
 # nrm ls
 # yrm ls
+# prm ls
 nnrm use taobao
 # nrm use taobao
 # yrm use taobao
+# prm use taobao
 nnrm test
 # nrm test
 # yrm test
+# prm test
 ```
 
 - `nnrm -h`: show help message
