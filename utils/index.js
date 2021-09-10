@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const execa = require("execa");
 const chalk = require("chalk");
 const fetch = require("node-fetch");
@@ -66,7 +68,7 @@ async function getCurrentRegistry(pkgManager = "npm") {
 }
 
 async function setCurrentRegistry(name, pkgManager = "npm") {
-  await execa(pkgManager, [
+  return execa(pkgManager, [
     "config",
     "set",
     "registry",
@@ -122,18 +124,34 @@ async function main(pkgManager) {
     await listRegistries(pkgManager);
   });
 
-  cli.command("use [registry]", "Change registry").action(async (registry) => {
-    if (!registry) {
-      console.log(
-        `\n  nnrm use <registry>\n  Example: ${chalk.yellow(
-          "nnrm use taobao"
-        )}\n`
-      );
-    } else {
-      await setCurrentRegistry(registry, pkgManager);
-      await listRegistries(pkgManager);
-    }
-  });
+  cli
+    .command("use [registry]", "Change registry")
+    .option("-l, --local", "set '.npmrc' for local")
+    .action(async (registry, options) => {
+      if (!registry) {
+        console.log(
+          `\n  nnrm use <registry>\n  Example: ${chalk.yellow(
+            "nnrm use taobao"
+          )}\n`
+        );
+      } else {
+        await setCurrentRegistry(registry, pkgManager);
+        await listRegistries(pkgManager);
+      }
+
+      if (options.l || options.local) {
+        const registryText = `registry=${registries[registry].registry}`;
+        if (fs.existsSync(".npmrc")) {
+          const content = fs.readFileSync(".npmrc", "utf-8");
+          fs.writeFileSync(
+            ".npmrc",
+            content.replace(/^registry=.*/gm, registryText)
+          );
+        } else {
+          fs.writeFileSync(".npmrc", registryText);
+        }
+      }
+    });
 
   cli
     .command("test", "Show response time for all registries")

@@ -37,10 +37,15 @@ nnrm ls
 # nrm ls
 # yrm ls
 # prm ls
+
 nnrm use taobao
 # nrm use taobao
 # yrm use taobao
 # prm use taobao
+
+# set `.npmrc` for local
+nrm use taobao -l
+
 nnrm test
 # nrm test
 # yrm test
@@ -63,6 +68,14 @@ Commands:
 Options:
   -h, --help     Display this message
   -v, --version  Display version number
+```
+
+```bash
+Usage:
+  $ nrm use [registry]
+
+Options:
+  -l, --local    set '.npmrc' for local
 ```
 
 ### Add/Remove custom registry
