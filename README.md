@@ -155,3 +155,7 @@ We just need use local command: `npm config set registry xxx`.
 ### Error when use Windows?
 
 If you are a Windows user, you may want to make sure that you use a generic command line like `bash` instead of `CMD`.
+
+## Ref
+
+- [npm-config | npm Docs](https://docs.npmjs.com/cli/v7/commands/npm-config)

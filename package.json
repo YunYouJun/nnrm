@@ -41,6 +41,7 @@
     "test:add": "node index.js add yyj https://www.yunyoujun.cn",
     "test:remove": "node index.js remove yyj",
     "test:test": "node index.js test",
+    "test:use": "node index.js use taobao",
     "postinstall": "node index.js ls"
   },
   "dependencies": {

@@ -159,3 +159,7 @@ cac(3.6KB) 相比 commander(6.8KB) 更小。~~并且它的名字取自我喜爱�
 ### Windows 报错？
 
 如果您是 Windows 用户，您可能需要确保你使用 `bash` 等类 UNIX 通用命令行（而非 CMD）。
+
+## 参考
+
+- [npm-config | npm Docs](https://docs.npmjs.com/cli/v7/commands/npm-config)

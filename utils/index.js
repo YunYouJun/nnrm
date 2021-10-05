@@ -70,12 +70,17 @@ async function getCurrentRegistry(pkgManager = "npm") {
   }
 }
 
+/**
+ * https://docs.npmjs.com/cli/v7/commands/npm-config
+ * @param {string} name
+ * @param {*} pkgManager
+ * @returns
+ */
 async function setCurrentRegistry(name, pkgManager = "npm") {
   return execa(pkgManager, [
     "config",
     "set",
-    "registry",
-    registries[name].registry,
+    `registry=${registries[name].registry}`,
   ]);
 }
 
@@ -138,7 +143,8 @@ async function main(pkgManager) {
           )}\n`
         );
       } else {
-        await setCurrentRegistry(registry, pkgManager);
+        const info = await setCurrentRegistry(registry, pkgManager);
+        console.log(info);
         await listRegistries(pkgManager);
       }
 
