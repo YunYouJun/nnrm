@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-const { main } = require("./utils");
+import { main } from "./utils/index.js";
 main("npm");

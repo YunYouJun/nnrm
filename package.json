@@ -1,6 +1,7 @@
 {
   "name": "nnrm",
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "type": "module",
   "description": "New npm registry manager.",
   "main": "index.js",
   "bin": {
@@ -13,6 +14,19 @@
   "engines": {
     "node": ">=12.x"
   },
+  "files": [
+    "index.js",
+    "yrm.js",
+    "prm.js",
+    "utils",
+    "registries.json"
+  ],
+  "keywords": [
+    "npm",
+    "registry",
+    "toggle",
+    "manager"
+  ],
   "repository": "https://github.com/YunYouJun/nnrm",
   "author": {
     "email": "me@yunyoujun.cn",
@@ -23,15 +37,16 @@
   "scripts": {
     "dev": "node index.js",
     "ls": "node index.js ls",
-    "test": "node index.js test",
+    "test": "npm run ls && npm run test:add && npm run test:remove && npm run test:test",
     "test:add": "node index.js add yyj https://www.yunyoujun.cn",
     "test:remove": "node index.js remove yyj",
+    "test:test": "node index.js test",
     "postinstall": "node index.js ls"
   },
   "dependencies": {
     "cac": "^6.7.3",
     "chalk": "^4.1.2",
     "execa": "^5.1.1",
-    "node-fetch": "^2.6.2"
+    "node-fetch": "^3.0.0"
   }
 }

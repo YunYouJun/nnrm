@@ -1,8 +1,10 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const chalk = require("chalk");
-const execa = require("execa");
+import chalk from "chalk";
+import execa from "execa";
+
+import { require } from "./require.js";
 
 const NNRM = path.join(process.env.HOME, ".nnrm");
 const NNRM_REGISTRIES = path.join(NNRM, "registries.json");
@@ -74,8 +76,4 @@ function removeCustomRegistry(name) {
   setCustomRegistry(customRegistries);
 }
 
-module.exports = {
-  getCustomRegistry,
-  addCustomRegistry,
-  removeCustomRegistry,
-};
+export { getCustomRegistry, addCustomRegistry, removeCustomRegistry };

@@ -4,6 +4,7 @@ English Docs | [中文文档](./README.zh-CN.md)
 
 [![npm](https://img.shields.io/npm/v/nnrm)](https://www.npmjs.com/package/nnrm)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yunyoujun/nnrm)
+[![node-current](https://img.shields.io/node/v/nnrm)](https://nodejs.dev/)
 ![npm](https://img.shields.io/npm/dt/nnrm)
 ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/nnrm)
 ![Snyk Vulnerabilities for npm scoped package](https://img.shields.io/snyk/vulnerabilities/npm/nnrm)
@@ -20,8 +21,9 @@ Use smaller dependencies than [nrm](https://github.com/Pana/nrm).
 
 ```sh
 # install
-yarn global add nnrm
 npm install -g nnrm
+yarn global add nnrm
+pnpm add -g nnrms
 ```
 
 ## Usage
@@ -101,7 +103,7 @@ It will be recorded in your `~/.nnrm/registries.json`.
 
 ## Features
 
-- Support `npm` and `yarn`
+- Support `npm`/`yarn`/`pnpm` (the registry of `yarn` and `npm/pnpm` is independent of each other)
 - Smaller Dependencies
   - Use `node-fetch` instead of `request` for speed test
   - Use `execa` instead of `npm`
@@ -149,3 +151,7 @@ cac(3.6KB) is smaller than commander(6.8KB). ~~And i love C.C.~~
 Install package [npm](https://www.npmjs.com/package/npm) to use `npm.config.set('registry', 'xxx')` is expensive.
 
 We just need use local command: `npm config set registry xxx`.
+
+### Error when use Windows?
+
+If you are a Windows user, you may want to make sure that you use a generic command line like `bash` instead of `CMD`.

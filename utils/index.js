@@ -1,17 +1,20 @@
-const fs = require("fs");
+import fs from "fs";
 
-const execa = require("execa");
-const chalk = require("chalk");
-const fetch = require("node-fetch");
+import execa from "execa";
+import chalk from "chalk";
+import fetch from "node-fetch";
 
-const cli = require("cac")();
+import { cac } from "cac";
+import { require } from "./require.js";
+
 const pkg = require("../package.json");
+const cli = cac();
 
-const {
+import {
   getCustomRegistry,
   addCustomRegistry,
   removeCustomRegistry,
-} = require("./registries");
+} from "./registries.js";
 
 // init default and custom registries
 const defaultRegistries = require("../registries.json");
@@ -182,9 +185,4 @@ async function main(pkgManager) {
   cli.parse();
 }
 
-module.exports = {
-  listRegistries,
-  listDelayTime,
-  setCurrentRegistry,
-  main,
-};
+export { listRegistries, listDelayTime, setCurrentRegistry, main };

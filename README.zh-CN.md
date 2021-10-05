@@ -4,6 +4,10 @@ English Docs | [中文文档](./README.zh-CN.md)
 
 [![npm](https://img.shields.io/npm/v/nnrm)](https://www.npmjs.com/package/nnrm)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yunyoujun/nnrm)
+[![node-current](https://img.shields.io/node/v/nnrm)](https://nodejs.dev/)
+![npm](https://img.shields.io/npm/dt/nnrm)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/nnrm)
+![Snyk Vulnerabilities for npm scoped package](https://img.shields.io/snyk/vulnerabilities/npm/nnrm)
 
 > nnrm = new nrm
 
@@ -17,8 +21,9 @@ English Docs | [中文文档](./README.zh-CN.md)
 
 ```sh
 # install
-yarn global add nnrm
 npm install -g nnrm
+yarn global add nnrm
+pnpm add -g nnrms
 ```
 
 ## 使用
@@ -102,7 +107,7 @@ nrm remove example
 
 nnrm 相比 nrm 的改进之处：
 
-- 支持 yarn （yarn 与 npm 的 registry 是互相独立的）
+- 支持 yarn （yarn 与 npm 的 registry 是互相独立的，`pnpm` 则与 npm 相同）
 - 极小的依赖
   - 使用 `node-fetch` (289B) 替代 `request` (184.8KB) 进行测速 [node-fetch vs axios vs request | npmtrends](https://www.npmtrends.com/node-fetch-vs-axios-vs-request)
   - 使用 `execa` (8.4KB) 替代 `npm` (455.4KB) 通过终端而非 node API 实现切换 [execa vs npm | npmtrends](https://www.npmtrends.com/execa-vs-npm)
