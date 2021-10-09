@@ -144,9 +144,9 @@ async function main(pkgManager) {
           )}\n`
         );
       } else {
-        const info = await setCurrentRegistry(registry, pkgManager);
-        console.log(info);
-        await listRegistries(pkgManager);
+        setCurrentRegistry(registry, pkgManager).then(() => {
+          listRegistries(pkgManager);
+        });
       }
 
       if (options.l || options.local) {
