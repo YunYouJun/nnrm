@@ -96,7 +96,7 @@ It will be recorded in your `~/.nnrm/registries.json`.
 
 - npm -------- <https://registry.npmjs.org/>
 - yarn ------- <https://registry.yarnpkg.com/>
-- taobao ----- <https://registry.npm.taobao.org/>
+- taobao ----- <https://registry.npmmirror.com/> (taobao redirect `npm.taobao.org` to `npmmirror.com`)
 - tencent ---- <https://mirrors.cloud.tencent.com/npm/>
 - npmMirror -- <https://skimdb.npmjs.com/registry/>
 - github ----- <https://npm.pkg.github.com/>
