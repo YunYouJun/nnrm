@@ -4,15 +4,13 @@ import path from "path";
 import chalk from "chalk";
 import execa from "execa";
 
-import { require } from "./require.js";
-
 const NNRM = path.join(process.env.HOME, ".nnrm");
 const NNRM_REGISTRIES = path.join(NNRM, "registries.json");
 
 async function getCustomRegistry() {
   let customRegistries = {};
   try {
-    customRegistries = require(NNRM_REGISTRIES);
+    customRegistries = JSON.parse(fs.readFileSync(NNRM_REGISTRIES));
   } catch (e) {
     const msg = `\nWe will create '${chalk.yellow(
       NNRM_REGISTRIES

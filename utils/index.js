@@ -5,6 +5,7 @@ import chalk from "chalk";
 import fetch from "node-fetch";
 
 import { cac } from "cac";
+// ES Module doesn't have require
 import { require } from "./require.js";
 
 const pkg = require("../package.json");
