@@ -9,7 +9,7 @@
   },
   "taobao": {
     "home": "https://npmmirror.com/",
-    "registry": "https://registry.nlark.com/"
+    "registry": "https://registry.npmmirror.com/"
   },
   "tencent": {
     "home": "https://mirrors.cloud.tencent.com/npm/",
