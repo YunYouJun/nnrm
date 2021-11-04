@@ -23,7 +23,7 @@ Use smaller dependencies than [nrm](https://github.com/Pana/nrm).
 # install
 npm install -g nnrm
 yarn global add nnrm
-pnpm add -g nnrms
+pnpm add -g nnrm
 ```
 
 ## Usage
