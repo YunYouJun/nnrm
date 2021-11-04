@@ -23,7 +23,7 @@ English Docs | [中文文档](./README.zh-CN.md)
 # install
 npm install -g nnrm
 yarn global add nnrm
-pnpm add -g nnrms
+pnpm add -g nnrm
 ```
 
 ## 使用
