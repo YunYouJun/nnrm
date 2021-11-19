@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import chalk from "chalk";
-import execa from "execa";
+import { execa } from "execa";
 
 const NNRM = path.join(process.env.HOME, ".nnrm");
 const NNRM_REGISTRIES = path.join(NNRM, "registries.json");

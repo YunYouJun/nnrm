@@ -1,6 +1,6 @@
 import fs from "fs";
 
-import execa from "execa";
+import { execa } from "execa";
 import chalk from "chalk";
 import fetch from "node-fetch";
 
