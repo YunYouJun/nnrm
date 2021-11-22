@@ -156,6 +156,13 @@ We just need use local command: `npm config set registry xxx`.
 
 If you are a Windows user, you may want to make sure that you use a generic command line like `bash` instead of `CMD`.
 
+### `nrm` conflicts with other commands
+
+nrm(command) is a command of [nrm(package)](https://github.com/Pana/nrm). 
+You should uninstall `nrm(package)` to use `nrm(command)` with `nnrm(package)`. Or you can use `nnrm(command)`.
+
+> nrm(command) may conflict with [nrm](https://github.com/Pana/nrm) or [ni](https://github.com/antfu/ni). You can uninstall them or just use command `nnrm` without uninstalling them.
+
 ## Ref
 
 - [npm-config | npm Docs](https://docs.npmjs.com/cli/v7/commands/npm-config)
