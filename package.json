@@ -1,6 +1,6 @@
 {
   "name": "nnrm",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "description": "New npm registry manager.",
   "main": "index.js",
@@ -46,8 +46,8 @@
   },
   "dependencies": {
     "cac": "^6.7.12",
-    "chalk": "^4.1.2",
-    "execa": "^6.0.0",
-    "node-fetch": "^3.1.0"
+    "chalk": "^5.0.0",
+    "execa": "^6.1.0",
+    "node-fetch": "^3.2.0"
   }
 }

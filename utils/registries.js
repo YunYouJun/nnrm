@@ -47,8 +47,8 @@ function setCustomRegistry(registries) {
  * @param {string} registry url
  * @param {string} home
  */
-function addCustomRegistry(name, url, home) {
-  let customRegistries = getCustomRegistry();
+async function addCustomRegistry(name, url, home) {
+  let customRegistries = await getCustomRegistry();
 
   // npm config set registry auto add '/'
   if (url.slice(-1) !== "/") {

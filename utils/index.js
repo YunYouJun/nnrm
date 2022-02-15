@@ -174,7 +174,7 @@ async function main(pkgManager) {
   cli
     .command("add <registry> <url> [home]", "Add a custom registry")
     .action(async (name, url, home) => {
-      addCustomRegistry(name, url, home);
+      await addCustomRegistry(name, url, home);
       registries = getAllRegistries();
       await listRegistries(pkgManager);
     });
