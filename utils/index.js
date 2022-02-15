@@ -182,7 +182,7 @@ async function main(pkgManager) {
   cli
     .command("remove <registry>", "Remove a custom registry")
     .action(async (name) => {
-      removeCustomRegistry(name);
+      await removeCustomRegistry(name);
       registries = getAllRegistries();
       await listRegistries(pkgManager);
     });

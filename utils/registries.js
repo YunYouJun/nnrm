@@ -66,8 +66,8 @@ async function addCustomRegistry(name, url, home) {
  * remove a custom registry
  * @param {string} name
  */
-function removeCustomRegistry(name) {
-  let customRegistries = getCustomRegistry();
+async function removeCustomRegistry(name) {
+  let customRegistries = await getCustomRegistry();
   if (customRegistries[name]) {
     delete customRegistries[name];
   }
