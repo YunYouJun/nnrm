@@ -175,7 +175,7 @@ async function main(pkgManager) {
     .command("add <registry> <url> [home]", "Add a custom registry")
     .action(async (name, url, home) => {
       await addCustomRegistry(name, url, home);
-      registries = getAllRegistries();
+      registries = await getAllRegistries();
       await listRegistries(pkgManager);
     });
 
@@ -183,7 +183,7 @@ async function main(pkgManager) {
     .command("remove <registry>", "Remove a custom registry")
     .action(async (name) => {
       await removeCustomRegistry(name);
-      registries = getAllRegistries();
+      registries = await getAllRegistries();
       await listRegistries(pkgManager);
     });
 
