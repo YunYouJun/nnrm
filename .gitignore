@@ -5,6 +5,7 @@ logs/
 # lock
 package-lock.json
 yarn.lock
-pnpm-lock.yaml
+# include it for ci
+# pnpm-lock.yaml
 
 coverage/
