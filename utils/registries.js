@@ -4,7 +4,7 @@ import path from "path";
 import chalk from "chalk";
 import { execa } from "execa";
 
-const NNRM = path.join(process.env.HOME, ".nnrm");
+const NNRM = path.join(process.env.HOME || process.env.USERPROFILE, ".nnrm");
 const NNRM_REGISTRIES = path.join(NNRM, "registries.json");
 
 async function getCustomRegistry() {
