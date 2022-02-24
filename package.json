@@ -35,6 +35,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "coverage": "vitest run --coverage",
     "dev": "node index.js",
     "ls": "node index.js ls",
     "test": "npm run ls && npm run test:add && npm run test:remove && npm run test:test",
@@ -42,6 +43,7 @@
     "test:remove": "node index.js remove yyj",
     "test:test": "node index.js test",
     "test:use": "node index.js use taobao",
+    "vitest": "vitest",
     "postinstall": "node index.js ls"
   },
   "dependencies": {
@@ -49,5 +51,9 @@
     "chalk": "^5.0.0",
     "execa": "^6.1.0",
     "node-fetch": "^3.2.0"
+  },
+  "devDependencies": {
+    "c8": "^7.11.0",
+    "vitest": "^0.5.5"
   }
 }

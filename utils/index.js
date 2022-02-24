@@ -47,16 +47,20 @@ async function getAllRegistries() {
 /**
  * Show all npm registries
  */
-async function listRegistries(pkgManager = "npm") {
+export async function listRegistries(pkgManager = "npm") {
   let list = "";
   const currentRegistry = await getCurrentRegistry(pkgManager);
 
+  let inList = false
+
   Object.keys(registries).forEach((key) => {
     const isCurrentRegistry = key === currentRegistry;
+    if (isCurrentRegistry) inList = true
     const prefix = isCurrentRegistry ? "*" : " ";
     const item = `\n ${prefix} ${dashline(key)} ${registries[key].registry}`;
     list += isCurrentRegistry ? chalk.green(item) : item;
   });
+  if (!inList) console.log(`\n  ${chalk.red('Unknown')} registry: ${chalk.yellow(currentRegistry)}`) 
   console.log(list + "\n");
   return list;
 }
@@ -69,6 +73,7 @@ async function getCurrentRegistry(pkgManager = "npm") {
       return name;
     }
   }
+  return stdout
 }
 
 /**
@@ -77,8 +82,8 @@ async function getCurrentRegistry(pkgManager = "npm") {
  * @param {*} pkgManager
  * @returns
  */
-async function setCurrentRegistry(name, pkgManager = "npm") {
-  return execa(pkgManager, [
+export async function setCurrentRegistry(name, pkgManager = "npm") {
+  await execa(pkgManager, [
     "config",
     "set",
     `registry=${registries[name].registry}`,
@@ -112,7 +117,7 @@ async function getDelayTime(url) {
  * list registries delay time
  * @returns
  */
-async function listDelayTime() {
+export async function listDelayTime() {
   return await Promise.all(
     Object.keys(registries).map(async (key) => {
       const delayTime = await getDelayTime(registries[key].registry);
@@ -125,13 +130,14 @@ async function listDelayTime() {
 /**
  * @param {string} pkgManager npm|yarn
  */
-async function main(pkgManager) {
+export async function main(pkgManager) {
   // init
   registries = await getAllRegistries();
 
-  cli.command("ls", "List all the registries").action(async () => {
+  const onLs = async () => {
     await listRegistries(pkgManager);
-  });
+  }
+  cli.command("ls", "List all the registries").action(onLs);
 
   cli
     .command("use [registry]", "Change registry")
@@ -144,9 +150,8 @@ async function main(pkgManager) {
           )}\n`
         );
       } else {
-        setCurrentRegistry(registry, pkgManager).then(() => {
-          listRegistries(pkgManager);
-        });
+        await setCurrentRegistry(registry, pkgManager)
+        await listRegistries(pkgManager)
       }
 
       if (options.l || options.local) {
@@ -191,5 +196,3 @@ async function main(pkgManager) {
   cli.version(pkg.version);
   cli.parse();
 }
-
-export { listRegistries, listDelayTime, setCurrentRegistry, main };

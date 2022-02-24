@@ -7,7 +7,7 @@ import { execa } from "execa";
 const NNRM = path.join(process.env.HOME || process.env.USERPROFILE, ".nnrm");
 const NNRM_REGISTRIES = path.join(NNRM, "registries.json");
 
-async function getCustomRegistry() {
+export async function getCustomRegistry() {
   let customRegistries = {};
   try {
     customRegistries = JSON.parse(fs.readFileSync(NNRM_REGISTRIES));
@@ -47,7 +47,7 @@ function setCustomRegistry(registries) {
  * @param {string} registry url
  * @param {string} home
  */
-async function addCustomRegistry(name, url, home) {
+export async function addCustomRegistry(name, url, home) {
   let customRegistries = await getCustomRegistry();
 
   // npm config set registry auto add '/'
@@ -66,12 +66,10 @@ async function addCustomRegistry(name, url, home) {
  * remove a custom registry
  * @param {string} name
  */
-async function removeCustomRegistry(name) {
+export async function removeCustomRegistry(name) {
   let customRegistries = await getCustomRegistry();
   if (customRegistries[name]) {
     delete customRegistries[name];
   }
   setCustomRegistry(customRegistries);
 }
-
-export { getCustomRegistry, addCustomRegistry, removeCustomRegistry };
