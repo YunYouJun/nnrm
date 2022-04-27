@@ -1,6 +1,6 @@
 {
   "name": "nnrm",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "type": "module",
   "description": "New npm registry manager.",
   "main": "index.js",
