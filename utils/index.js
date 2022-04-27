@@ -86,7 +86,8 @@ export async function setCurrentRegistry(name, pkgManager = "npm") {
   await execa(pkgManager, [
     "config",
     "set",
-    `registry=${registries[name].registry}`,
+    "registry",
+    registries[name].registry
   ]);
 }
 
@@ -130,7 +131,7 @@ export async function listDelayTime() {
 /**
  * @param {string} pkgManager npm|yarn
  */
-export async function main(pkgManager) {
+export async function main(pkgManager = "npm") {
   // init
   registries = await getAllRegistries();
 
