@@ -163,3 +163,11 @@ cac(3.6KB) 相比 commander(6.8KB) 更小。~~并且它的名字取自我喜爱�
 ## 参考
 
 - [npm-config | npm Docs](https://docs.npmjs.com/cli/v7/commands/npm-config)
+
+## [赞助者](https://sponsors.yunyoujun.cn)
+
+<p align="center">
+  <a href="https://sponsors.yunyoujun.cn">
+    <img src='https://cdn.jsdelivr.net/gh/YunYouJun/sponsors/public/sponsors.svg'/>
+  </a>
+</p>
