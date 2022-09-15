@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm run build --if-present
+      - run: npm run build --if-present
       # https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
       - run: pnpm publish --access public --no-git-checks
         env:
