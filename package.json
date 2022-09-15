@@ -47,13 +47,14 @@
     "postinstall": "node index.js ls"
   },
   "dependencies": {
-    "cac": "^6.7.12",
+    "cac": "^6.7.14",
     "chalk": "^5.0.1",
     "execa": "^6.1.0",
-    "node-fetch": "^3.2.4"
+    "node-fetch": "^3.2.10"
   },
   "devDependencies": {
-    "c8": "^7.11.2",
-    "vitest": "^0.10.0"
+    "@vitest/coverage-c8": "^0.23.2",
+    "vite": "^3.1.1",
+    "vitest": "^0.23.2"
   }
 }
