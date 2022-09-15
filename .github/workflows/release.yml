@@ -15,9 +15,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
-        with:
-          version: 7
-          run_install: true
 
       # after pnpm
       - name: Use Node.js 16
@@ -26,6 +23,9 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
           cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
 
       - run: pnpm run build --if-present
       # https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages

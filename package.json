@@ -4,6 +4,7 @@
   "type": "module",
   "description": "New npm registry manager.",
   "main": "index.js",
+  "packageManager": "pnpm@7.10.0",
   "bin": {
     "nnrm": "index.js",
     "nrm": "index.js",
@@ -58,6 +59,5 @@
     "bumpp": "^8.2.1",
     "vite": "^3.1.1",
     "vitest": "^0.23.2"
-  },
-  "packageManager": "yarn@3.2.3"
+  }
 }
