@@ -31,7 +31,7 @@ pnpm add -g nnrm
 以下命令是用来切换对应的包管理工具的源。
 
 - `nnrm` & `nrm`: npm
-- `nyrm` & `yrm`: yarn
+- `nyrm` & `yrm`: yarn（v1-v3）
 - `prm`: pnpm
 
 ```sh
@@ -107,7 +107,8 @@ nrm remove example
 
 nnrm 相比 nrm 的改进之处：
 
-- 支持 yarn （yarn 与 npm 的 registry 是互相独立的，`pnpm` 则与 npm 相同）
+- 支持 yarn(v1-v3) （yarn 与 npm 的 registry 是互相独立的，`pnpm` 则与 npm 相同）
+  - `yarn(v3)` 的配置字段使用 `npmRegistryServer` 替代了 `registry`
 - 极小的依赖
   - 使用 `node-fetch` (289B) 替代 `request` (184.8KB) 进行测速 [node-fetch vs axios vs request | npmtrends](https://www.npmtrends.com/node-fetch-vs-axios-vs-request)
   - 使用 `execa` (8.4KB) 替代 `npm` (455.4KB) 通过终端而非 node API 实现切换 [execa vs npm | npmtrends](https://www.npmtrends.com/execa-vs-npm)

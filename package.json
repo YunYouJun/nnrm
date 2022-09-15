@@ -44,7 +44,8 @@
     "test:test": "node index.js test",
     "test:use": "node index.js use taobao",
     "vitest": "vitest",
-    "postinstall": "node index.js ls"
+    "postinstall": "node index.js ls",
+    "release": "bumpp --commit --push --tag"
   },
   "dependencies": {
     "cac": "^6.7.14",

@@ -31,7 +31,7 @@ pnpm add -g nnrm
 These commands are used to toggle the corresponding registry.
 
 - `nnrm` & `nrm`: npm
-- `nyrm` & `yrm`: yarn
+- `nyrm` & `yrm`: yarn(v1-v3)
 - `prm`: pnpm
 
 ```sh
@@ -103,7 +103,8 @@ It will be recorded in your `~/.nnrm/registries.json`.
 
 ## Features
 
-- Support `npm`/`yarn`/`pnpm` (the registry of `yarn` and `npm/pnpm` is independent of each other)
+- Support `npm`/`yarn(v1-v3)`/`pnpm` (the registry of `yarn` and `npm/pnpm` is independent of each other)
+  - `yarn(v3)` config use `npmRegistryServer` instead of `registry`
 - Smaller Dependencies
   - Use `node-fetch` instead of `request` for speed test
   - Use `execa` instead of `npm`
