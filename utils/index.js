@@ -36,6 +36,17 @@ function dashline(str) {
 }
 
 /**
+ * Ensure suffix of a string
+ * @param {string} suffix
+ * @param {string} str
+ */
+function ensureSuffix(suffix, str) {
+  if (!str.endsWith(suffix))
+    return str + suffix
+  return str
+}
+
+/**
  * get default and custom registries
  * @returns
  */
@@ -66,14 +77,22 @@ export async function listRegistries(pkgManager = "npm") {
 }
 
 async function getCurrentRegistry(pkgManager = "npm") {
-  const { stdout } = await execa(pkgManager, ["config", "get", "registry"]);
+  let registry = ''
+  try {
+    const { stdout = '' } = await execa(pkgManager, ["config", "get", "registry"]);
+    registry = stdout.trim();
+  } catch {
+    // for yarn v3
+    const { stdout = '' } = await execa(pkgManager, ["config", "get", "npmRegistryServer"]);
+    registry = stdout.trim();
+  }
 
   for (const name in registries) {
-    if (registries[name].registry === stdout) {
+    if (registries[name].registry === ensureSuffix('/', registry)) {
       return name;
     }
   }
-  return stdout
+  return registry
 }
 
 /**
