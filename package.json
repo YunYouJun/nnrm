@@ -1,6 +1,6 @@
 {
   "name": "nnrm",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "type": "module",
   "description": "New npm registry manager.",
   "main": "index.js",
@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "@vitest/coverage-c8": "^0.23.2",
+    "bumpp": "^8.2.1",
     "vite": "^3.1.1",
     "vitest": "^0.23.2"
   },
