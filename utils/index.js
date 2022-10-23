@@ -1,7 +1,7 @@
 import fs from "fs";
 
 import { execa } from "execa";
-import chalk from "chalk";
+import pc from "picocolors";
 import fetch from "node-fetch";
 
 import { cac } from "cac";
@@ -69,9 +69,9 @@ export async function listRegistries(pkgManager = "npm") {
     if (isCurrentRegistry) inList = true
     const prefix = isCurrentRegistry ? "*" : " ";
     const item = `\n ${prefix} ${dashline(key)} ${registries[key].registry}`;
-    list += isCurrentRegistry ? chalk.green(item) : item;
+    list += isCurrentRegistry ? pc.green(item) : item;
   });
-  if (!inList) console.log(`\n  ${chalk.red('Unknown')} registry: ${chalk.yellow(currentRegistry)}`) 
+  if (!inList) console.log(`\n  ${pc.red('Unknown')} registry: ${pc.yellow(currentRegistry)}`) 
   console.log(list + "\n");
   return list;
 }
@@ -121,15 +121,15 @@ async function getDelayTime(url) {
       const time = new Date() - start;
       const msg = `${time} ms`;
       if (time < 500) {
-        return chalk.green(msg);
+        return pc.green(msg);
       } else if (time < 1000) {
-        return chalk.yellow(msg);
+        return pc.yellow(msg);
       } else {
-        return chalk.red(msg);
+        return pc.red(msg);
       }
     })
     .catch((e) => {
-      return chalk.red("Timeout");
+      return pc.red("Timeout");
     });
 }
 
@@ -165,7 +165,7 @@ export async function main(pkgManager = "npm") {
     .action(async (registry, options) => {
       if (!registry) {
         console.log(
-          `\n  nnrm use <registry>\n  Example: ${chalk.yellow(
+          `\n  nnrm use <registry>\n  Example: ${pc.yellow(
             "nnrm use taobao"
           )}\n`
         );

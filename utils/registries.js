@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import chalk from "chalk";
+import pc from "picocolors";
 import { execa } from "execa";
 
 const NNRM = path.join(process.env.HOME || process.env.USERPROFILE, ".nnrm");
@@ -12,7 +12,7 @@ export async function getCustomRegistry() {
   try {
     customRegistries = JSON.parse(fs.readFileSync(NNRM_REGISTRIES));
   } catch (e) {
-    const msg = `\nWe will create '${chalk.yellow(
+    const msg = `\nWe will create '${pc.yellow(
       NNRM_REGISTRIES
     )}' to record your custom registries.\n`;
     console.log(msg);
