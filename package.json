@@ -55,9 +55,9 @@
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
-    "@vitest/coverage-c8": "^0.23.2",
+    "@vitest/coverage-c8": "^0.24.3",
     "bumpp": "^8.2.1",
-    "vite": "^3.1.1",
-    "vitest": "^0.23.2"
+    "vite": "^3.2.0",
+    "vitest": "^0.24.3"
   }
 }
