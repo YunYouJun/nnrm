@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import { existsSync, promises as fs } from 'node:fs'
 
 import { $ } from 'execa'
 import { green, red, yellow } from 'picocolors'
@@ -171,15 +171,15 @@ export async function main(pkgManager = 'npm') {
 
       if (options.l || options.local) {
         const registryText = `registry=${registries[registry].registry}`
-        if (fs.existsSync('.npmrc')) {
-          const content = fs.readFileSync('.npmrc', 'utf-8')
-          fs.writeFileSync(
+        if (existsSync('.npmrc')) {
+          const content = await fs.readFile('.npmrc', 'utf-8')
+          await fs.writeFile(
             '.npmrc',
             content.replace(/^registry=.*/gm, registryText),
           )
         }
         else {
-          fs.writeFileSync('.npmrc', registryText)
+          await fs.writeFile('.npmrc', registryText)
         }
       }
     })

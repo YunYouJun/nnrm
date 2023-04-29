@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import { existsSync, promises as fs } from 'node:fs'
 import path from 'node:path'
 
 import { yellow } from 'picocolors'
@@ -11,7 +11,7 @@ const NNRM_REGISTRIES = path.join(NNRM, 'registries.json')
 export async function getCustomRegistry() {
   let customRegistries: Registries = {}
   try {
-    customRegistries = JSON.parse(fs.readFileSync(NNRM_REGISTRIES, 'utf-8'))
+    customRegistries = JSON.parse(await fs.readFile(NNRM_REGISTRIES, 'utf-8'))
   }
   catch (e) {
     const msg = `\nWe will create '${yellow(
@@ -19,9 +19,9 @@ export async function getCustomRegistry() {
     )}' to record your custom registries.\n`
     console.log(msg)
 
-    if (!fs.existsSync(NNRM)) {
+    if (!existsSync(NNRM)) {
       try {
-        fs.mkdirSync(NNRM, { recursive: true })
+        await fs.mkdir(NNRM, { recursive: true })
       }
       catch (e: any) {
         // permission denied
@@ -39,8 +39,8 @@ export async function getCustomRegistry() {
 /**
  * write ~/.nnrm/registries.json
  */
-function setCustomRegistry(registries: Registries) {
-  return fs.writeFileSync(NNRM_REGISTRIES, JSON.stringify(registries, null, 2))
+async function setCustomRegistry(registries: Registries) {
+  return await fs.writeFile(NNRM_REGISTRIES, JSON.stringify(registries, null, 2))
 }
 
 /**

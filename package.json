@@ -47,7 +47,7 @@
     "test:use": "node dist/index.js use taobao",
     "typecheck": "tsc --noEmit",
     "vitest": "vitest",
-    "postinstall": "npm run build && node dist/index.js ls",
+    "postinstall": "nnrm ls",
     "release": "bumpp --commit --push --tag"
   },
   "devDependencies": {
