@@ -60,6 +60,7 @@
     "execa": "^7.1.1",
     "node-fetch": "^3.3.1",
     "picocolors": "^1.0.0",
+    "simple-git-hooks": "^2.8.1",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",
     "vitest": "^0.30.1"
