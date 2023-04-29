@@ -1,7 +1,7 @@
 {
   "name": "nnrm",
   "type": "module",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "packageManager": "pnpm@8.3.1",
   "description": "New npm registry manager.",
   "author": {
@@ -48,7 +48,7 @@
     "typecheck": "tsc --noEmit",
     "vitest": "vitest",
     "prepublishOnly": "npm run build",
-    "postinstall": "npx nnrm ls",
+    "postinstall": "echo '`nnrm ls` to use'",
     "release": "bumpp --commit --push --tag"
   },
   "devDependencies": {
