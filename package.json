@@ -48,7 +48,7 @@
     "typecheck": "tsc --noEmit",
     "vitest": "vitest",
     "prepublishOnly": "npm run build",
-    "postinstall": "nnrm ls",
+    "postinstall": "npx nnrm ls",
     "release": "bumpp --commit --push --tag"
   },
   "devDependencies": {
