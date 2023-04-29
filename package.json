@@ -1,7 +1,7 @@
 {
   "name": "nnrm",
   "type": "module",
-  "version": "0.4.0-beta.0",
+  "version": "0.4.0",
   "packageManager": "pnpm@8.3.1",
   "description": "New npm registry manager.",
   "author": {
@@ -47,6 +47,7 @@
     "test:use": "node dist/index.js use taobao",
     "typecheck": "tsc --noEmit",
     "vitest": "vitest",
+    "prepublishOnly": "npm run build",
     "postinstall": "nnrm ls",
     "release": "bumpp --commit --push --tag"
   },
