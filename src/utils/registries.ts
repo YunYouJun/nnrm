@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 import { yellow } from 'picocolors'
-import { execa } from 'execa'
+import { $ } from 'execa'
 import type { Registries, RegistryName } from '../types'
 
 const NNRM = path.join(process.env.HOME || process.env.USERPROFILE, '.nnrm')
@@ -26,7 +26,7 @@ export async function getCustomRegistry() {
       catch (e: any) {
         // permission denied
         console.log(e.message)
-        await execa('mkdir', [NNRM]).catch((e) => {
+        await $`mkdir ${NNRM}`.catch((e) => {
           console.log(e.message)
         })
       }

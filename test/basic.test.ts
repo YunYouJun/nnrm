@@ -1,9 +1,9 @@
-import { execa } from 'execa'
+import { $ } from 'execa'
 import { expect, test } from 'vitest'
 import registries from '../registries.json'
 
 async function nnrmCommand(...args: string[]) {
-  return await execa('node', ['index.js', ...args])
+  return await $`node index.js ${args.join(' ')}`
 }
 
 test('nnrm ls', async () => {

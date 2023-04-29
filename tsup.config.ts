@@ -9,4 +9,11 @@ export default defineConfig(options => ({
   clean: true,
   minify: !options.watch,
   format: ['esm'],
+  // require shims
+  banner: {
+    js: `
+    import { createRequire as topLevelCreateRequire } from 'module';
+    const require = topLevelCreateRequire(import.meta.url);
+    `,
+  },
 }))

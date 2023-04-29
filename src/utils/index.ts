@@ -1,25 +1,24 @@
 import fs from 'node:fs'
 
-import path from 'node:path'
-import { execa } from 'execa'
+import { $ } from 'execa'
 import { green, red, yellow } from 'picocolors'
 import fetch from 'node-fetch'
 
 import { cac } from 'cac'
 
+import pkg from '../../package.json'
+
+// init default and custom registries
+import defaultRegistries from '../../registries.json'
 import {
   addCustomRegistry,
   getCustomRegistry,
   removeCustomRegistry,
 } from './registries'
-import { readJson } from './fs'
-
-const pkg = readJson(path.join(__dirname, '../../package.json'))
-
-const cli = cac()
 
 // init default and custom registries
-const defaultRegistries = readJson(path.join(__dirname, '../../registries.json'))
+
+const cli = cac()
 
 // init in main
 let registries: Record<string, any> = {}
@@ -80,12 +79,12 @@ export async function listRegistries(pkgManager = 'npm') {
 async function getCurrentRegistry(pkgManager = 'npm') {
   let registry = ''
   try {
-    const { stdout = '' } = await execa(pkgManager, ['config', 'get', 'registry'])
+    const { stdout = '' } = await $`${pkgManager} config get registry`
     registry = stdout.trim()
   }
   catch {
     // for yarn v3
-    const { stdout = '' } = await execa(pkgManager, ['config', 'get', 'npmRegistryServer'])
+    const { stdout = '' } = await $`${pkgManager} config get npmRegistryServer`
     registry = stdout.trim()
   }
 
@@ -102,12 +101,7 @@ async function getCurrentRegistry(pkgManager = 'npm') {
  * @returns
  */
 export async function setCurrentRegistry(name: string, pkgManager = 'npm') {
-  await execa(pkgManager, [
-    'config',
-    'set',
-    'registry',
-    registries[name].registry,
-  ])
+  await $`${pkgManager} config set registry ${registries[name].registry}`
 }
 
 /**
