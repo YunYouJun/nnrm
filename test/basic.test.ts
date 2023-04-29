@@ -2,7 +2,7 @@ import { execa } from 'execa'
 import { expect, test } from 'vitest'
 import registries from '../registries.json'
 
-const nnrmCommand = async (...args: string[]) => {
+async function nnrmCommand(...args: string[]) {
   return await execa('node', ['index.js', ...args])
 }
 

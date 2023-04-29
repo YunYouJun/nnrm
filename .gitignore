@@ -12,3 +12,5 @@ coverage/
 
 .yarn
 .yarnrc.yml
+
+dist/
