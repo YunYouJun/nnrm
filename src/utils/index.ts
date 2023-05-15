@@ -101,6 +101,11 @@ async function getCurrentRegistry(pkgManager = 'npm') {
  * @returns
  */
 export async function setCurrentRegistry(name: string, pkgManager = 'npm') {
+  if (!registries[name]) {
+    console.log(`\n  ${red('Unknown')} registry: ${yellow(name)}`)
+    return
+  }
+
   await $`${pkgManager} config set registry ${registries[name].registry}`
 }
 
