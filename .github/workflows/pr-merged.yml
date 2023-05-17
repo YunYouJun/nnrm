@@ -1,0 +1,27 @@
+name: PR Merged
+
+on:
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - closed
+
+# due to permission, we should use pull_request_target instead of pull_request_view to trigger
+# another way: https://stackoverflow.com/a/71683208/7450566
+
+jobs:
+  if_merged:
+    runs-on: ubuntu-latest
+    steps:
+      - name: reply yun approved image
+        if: github.event.pull_request.merged == true
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '<img width="200" src="https://github.com/YunYouJun/yun/blob/main/images/meme/yun-good-alpha-compressed.png" alt="Yun Good!" />'
+            })
