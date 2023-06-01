@@ -11,7 +11,8 @@ const NNRM_REGISTRIES = path.join(NNRM, 'registries.json')
 export async function getCustomRegistry() {
   let customRegistries: Registries = {}
   try {
-    customRegistries = JSON.parse(await fs.readFile(NNRM_REGISTRIES, 'utf-8'))
+    const registriesText = await fs.readFile(NNRM_REGISTRIES, 'utf-8')
+    customRegistries = JSON.parse(registriesText.trim() || '{}')
   }
   catch (e) {
     const msg = `\nWe will create '${yellow(
@@ -31,7 +32,7 @@ export async function getCustomRegistry() {
         })
       }
     }
-    setCustomRegistry(customRegistries)
+    await setCustomRegistry(customRegistries)
   }
   return customRegistries
 }
@@ -40,13 +41,13 @@ export async function getCustomRegistry() {
  * write ~/.nnrm/registries.json
  */
 async function setCustomRegistry(registries: Registries) {
-  return await fs.writeFile(NNRM_REGISTRIES, JSON.stringify(registries, null, 2))
+  return fs.writeFile(NNRM_REGISTRIES, JSON.stringify(registries, null, 2))
 }
 
 /**
  * add custom registry
  */
-export async function addCustomRegistry(name: RegistryName, url: string, home: string) {
+export async function addCustomRegistry(name: RegistryName, url: string, home?: string) {
   const customRegistries = await getCustomRegistry()
 
   // npm config set registry auto add '/'
@@ -54,10 +55,10 @@ export async function addCustomRegistry(name: RegistryName, url: string, home: s
     url += '/'
 
   customRegistries[name] = {
-    home,
+    home: home || url,
     registry: url,
   }
-  setCustomRegistry(customRegistries)
+  await setCustomRegistry(customRegistries)
 }
 
 /**
@@ -68,5 +69,5 @@ export async function removeCustomRegistry(name: string) {
   if (customRegistries[name])
     delete customRegistries[name]
 
-  setCustomRegistry(customRegistries)
+  await setCustomRegistry(customRegistries)
 }

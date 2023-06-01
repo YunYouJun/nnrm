@@ -45,8 +45,8 @@
     "test:remove": "node dist/index.js remove yyj",
     "test:test": "node dist/index.js test",
     "test:use": "node dist/index.js use 0x3f && node dist/index.js use taobao",
+    "test:unit": "vitest",
     "typecheck": "tsc --noEmit",
-    "vitest": "vitest",
     "prepublishOnly": "npm run build",
     "postinstall": "echo '`\\x1b[33mnnrm -h\\x1b[0m` to see usage \n`\\x1b[33mnnrm ls\\x1b[0m` to see registries'",
     "release": "bumpp --commit --push --tag"

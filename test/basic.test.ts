@@ -1,41 +1,80 @@
 import { $ } from 'execa'
-import { expect, test } from 'vitest'
+import { beforeAll, describe, expect, it } from 'vitest'
 import registries from '../registries.json'
+import { addCustomRegistry, getAllRegistries, getCurrentRegistry, getRegistriesList, removeCustomRegistry, setCurrentRegistry, store } from '../src/utils'
 
 async function nnrmCommand(...args: string[]) {
-  return await $`node index.js ${args.join(' ')}`
+  return await $`node dist/index.js ${args.join(' ')}`
 }
 
-test('nnrm ls', async () => {
+const customRegistry = {
+  name: 'yyj',
+  url: 'https://www.yunyoujun.cn',
+  urlWithSlash: 'https://www.yunyoujun.cn/',
+}
+
+describe('nnrm ls', () => {
+  beforeAll(async () => {
+    // init
+    store.registries = await getAllRegistries()
+    store.pkgManager = 'npm'
+  })
+
   const name = 'npm'
-  const { stdout } = await nnrmCommand('ls')
-  expect(stdout.includes(name) && stdout.includes(registries[name].registry)).toBe(true)
+
+  it('command', async () => {
+    const { stdout } = await nnrmCommand('ls')
+    expect(stdout.includes(name) && stdout.includes(registries[name].registry)).toBe(true)
+  })
+
+  it('list', async () => {
+    const { list } = await getRegistriesList()
+    expect(list.includes(name) && list.includes(registries[name].registry)).toBe(true)
+  })
 })
 
-// test('nnrm use', async () => {
-//   const checkUse = async (registry: string) => {
-//     const { stdout } = await nnrmCommand('use', registry)
-//     // to debug, why this can not affect global registry?
-//     // had removed .npmrc
-//     expect(stdout.includes(`* ${registry}`)).toBe(true)
-//   }
+describe('nnrm use', () => {
+  async function useRegistry(registry: string) {
+    await setCurrentRegistry(registry, 'npm')
+  }
 
-//   await checkUse('yarn')
-//   await checkUse('taobao')
-// })
+  it('use toggle', async () => {
+    await useRegistry('taobao')
+    setTimeout(async () => {
+      expect(await getCurrentRegistry()).toBe('taobao')
+    }, 10)
 
-const name = 'yyj'
-
-test('nnrm add', async () => {
-  const url = 'https://www.yunyoujun.cn'
-  const { stdout } = await nnrmCommand('add', name, url)
-  expect(stdout.includes(name) && stdout.includes(url)).toBe(true)
-
-  // const test = await nnrmCommand('remove', name)
-  // console.log(test.stdout)
+    await useRegistry('npm')
+    setTimeout(async () => {
+      expect(await getCurrentRegistry()).toBe('npm')
+    }, 20)
+  })
 })
 
-test('nnrm remove', async () => {
-  const { stdout } = await nnrmCommand('remove', name)
-  expect(stdout.includes(name)).toBe(false)
+describe('nnrm add', () => {
+  it('add', async () => {
+    const { name, url, urlWithSlash } = customRegistry
+    await addCustomRegistry(name, url)
+    store.registries = await getAllRegistries()
+    expect(store.registries[name]).toStrictEqual({
+      home: urlWithSlash,
+      registry: urlWithSlash,
+    })
+  })
+
+  it('list after add', async () => {
+    const { name, url } = customRegistry
+    const { inList, list } = await getRegistriesList()
+    expect(inList).toBe(true)
+    expect(list.includes(name) && list.includes(url)).toBe(true)
+  })
+})
+
+describe('nnrm remove', () => {
+  it('utils', async () => {
+    expect(store.registries[customRegistry.name]).not.toBeUndefined()
+    await removeCustomRegistry(customRegistry.name)
+    store.registries = await getAllRegistries()
+    expect(store.registries[customRegistry.name]).toBeUndefined()
+  })
 })

@@ -16,12 +16,20 @@ import {
   removeCustomRegistry,
 } from './registries'
 
+export * from './registries'
+
 // init default and custom registries
 
 const cli = cac()
 
 // init in main
-let registries: Record<string, any> = {}
+export const store: {
+  pkgManager: 'npm' | 'yarn' | 'pnpm' | string
+  registries: Record<string, any>
+} = {
+  pkgManager: 'npm',
+  registries: {},
+}
 
 /**
  * generate equal width name with dashline
@@ -29,7 +37,7 @@ let registries: Record<string, any> = {}
  */
 function dashline(str: string) {
   const maxCharWidth
-    = Math.max(...Object.keys(registries).map(key => key.length)) + 3
+    = Math.max(...Object.keys(store.registries).map(key => key.length)) + 3
 
   const line = new Array(Math.max(1, maxCharWidth - str.length)).join('-')
   return `${str} ${line}`
@@ -48,35 +56,46 @@ function ensureSuffix(suffix: string, str: string) {
  * get default and custom registries
  * @returns
  */
-async function getAllRegistries() {
+export async function getAllRegistries() {
   const customRegistries = await getCustomRegistry()
   return Object.assign({}, defaultRegistries, customRegistries)
+}
+
+export async function getRegistriesList() {
+  let list = ''
+  const currentRegistry = await getCurrentRegistry(store.pkgManager)
+
+  let inList = false
+
+  Object.keys(store.registries).forEach((key) => {
+    const isCurrentRegistry = key === currentRegistry
+    if (isCurrentRegistry)
+      inList = true
+    const prefix = isCurrentRegistry ? '*' : ' '
+    const item = `\n ${prefix} ${dashline(key)} ${store.registries[key].registry}`
+    list += isCurrentRegistry ? green(item) : item
+  })
+
+  return {
+    inList,
+    list,
+    currentRegistry,
+  }
 }
 
 /**
  * Show all npm registries
  */
-export async function listRegistries(pkgManager = 'npm') {
-  let list = ''
-  const currentRegistry = await getCurrentRegistry(pkgManager)
+export async function listRegistries() {
+  const { inList, list, currentRegistry } = await getRegistriesList()
 
-  let inList = false
-
-  Object.keys(registries).forEach((key) => {
-    const isCurrentRegistry = key === currentRegistry
-    if (isCurrentRegistry)
-      inList = true
-    const prefix = isCurrentRegistry ? '*' : ' '
-    const item = `\n ${prefix} ${dashline(key)} ${registries[key].registry}`
-    list += isCurrentRegistry ? green(item) : item
-  })
   if (!inList)
     console.log(`\n  ${red('Unknown')} registry: ${yellow(currentRegistry)}`)
   console.log(`${list}\n`)
   return list
 }
 
-async function getCurrentRegistry(pkgManager = 'npm') {
+export async function getCurrentRegistry(pkgManager = 'npm') {
   let registry = ''
   try {
     const { stdout = '' } = await $`${pkgManager} config get registry`
@@ -88,8 +107,8 @@ async function getCurrentRegistry(pkgManager = 'npm') {
     registry = stdout.trim()
   }
 
-  for (const name in registries) {
-    if (registries[name].registry === ensureSuffix('/', registry))
+  for (const name in store.registries) {
+    if (store.registries[name].registry === ensureSuffix('/', registry))
       return name
   }
   return registry
@@ -97,16 +116,16 @@ async function getCurrentRegistry(pkgManager = 'npm') {
 
 /**
  * https://docs.npmjs.com/cli/v7/commands/npm-config
- * @param {*} pkgManager
+ * @param pkgManager
  * @returns
  */
 export async function setCurrentRegistry(name: string, pkgManager = 'npm') {
-  if (!registries[name]) {
+  if (!store.registries[name]) {
     console.log(`\n  ${red('Unknown')} registry: ${yellow(name)}`)
     return
   }
 
-  await $`${pkgManager} config set registry ${registries[name].registry}`
+  await $`${pkgManager} config set registry ${store.registries[name].registry}`
 }
 
 /**
@@ -138,8 +157,8 @@ async function getDelayTime(url: string) {
  */
 export async function listDelayTime() {
   return await Promise.all(
-    Object.keys(registries).map(async (key) => {
-      const delayTime = await getDelayTime(registries[key].registry)
+    Object.keys(store.registries).map(async (key) => {
+      const delayTime = await getDelayTime(store.registries[key].registry)
       const item = ` ${dashline(key)} ${delayTime}`
       console.log(item)
     }),
@@ -147,14 +166,15 @@ export async function listDelayTime() {
 }
 
 /**
- * @param {string} pkgManager npm|yarn
+ * @param pkgManager npm|yarn
  */
 export async function main(pkgManager = 'npm') {
   // init
-  registries = await getAllRegistries()
+  store.registries = await getAllRegistries()
+  store.pkgManager = pkgManager
 
   const onLs = async () => {
-    await listRegistries(pkgManager)
+    await listRegistries()
   }
   cli.command('ls', 'List all the registries').action(onLs)
 
@@ -170,7 +190,7 @@ export async function main(pkgManager = 'npm') {
         )
       }
       else if (options.l || options.local) {
-        const registryText = `registry=${registries[registry].registry}`
+        const registryText = `registry=${store.registries[registry].registry}`
         if (existsSync('.npmrc')) {
           const content = await fs.readFile('.npmrc', 'utf-8')
           await fs.writeFile(
@@ -180,12 +200,12 @@ export async function main(pkgManager = 'npm') {
         }
         else {
           await fs.writeFile('.npmrc', registryText)
-          await listRegistries(pkgManager)
+          await listRegistries()
         }
       }
       else {
         await setCurrentRegistry(registry, pkgManager)
-        await listRegistries(pkgManager)
+        await listRegistries()
       }
     })
 
@@ -201,16 +221,16 @@ export async function main(pkgManager = 'npm') {
     .command('add <registry> <url> [home]', 'Add a custom registry')
     .action(async (name, url, home) => {
       await addCustomRegistry(name, url, home)
-      registries = await getAllRegistries()
-      await listRegistries(pkgManager)
+      store.registries = await getAllRegistries()
+      await listRegistries()
     })
 
   cli
     .command('remove <registry>', 'Remove a custom registry')
     .action(async (name) => {
       await removeCustomRegistry(name)
-      registries = await getAllRegistries()
-      await listRegistries(pkgManager)
+      store.registries = await getAllRegistries()
+      await listRegistries()
     })
 
   cli.help()
