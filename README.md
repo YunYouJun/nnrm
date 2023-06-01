@@ -15,8 +15,9 @@ New npm registry manager.
 
 Use smaller dependencies than [nrm](https://github.com/Pana/nrm).
 
-- **nnrm**: [![install size](https://packagephobia.com/badge?p=nnrm@latest)](https://packagephobia.com/result?p=nnrm@latest)
-- **nrm**: [![install size](https://packagephobia.com/badge?p=nrm)](https://packagephobia.com/result?p=nrm)
+|nnrm|nrm|
+|---|---|
+|[![install size](https://packagephobia.com/badge?p=nnrm@latest)](https://packagephobia.com/result?p=nnrm@latest)|[![install size](https://packagephobia.com/badge?p=nrm)](https://packagephobia.com/result?p=nrm)|
 
 > [由来](https://www.yunyoujun.cn/posts/nnrm-new-nrm/)
 

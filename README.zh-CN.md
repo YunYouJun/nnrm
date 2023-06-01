@@ -15,8 +15,9 @@ English Docs | [中文文档](./README.zh-CN.md)
 
 相比 [nrm](https://github.com/Pana/nrm) 使用了更小的依赖。
 
-- **nnrm**: [![install size](https://packagephobia.com/badge?p=nnrm@latest)](https://packagephobia.com/result?p=nnrm@latest)
-- **nrm**: [![install size](https://packagephobia.com/badge?p=nrm)](https://packagephobia.com/result?p=nrm)
+|nnrm|nrm|
+|---|---|
+|[![install size](https://packagephobia.com/badge?p=nnrm@latest)](https://packagephobia.com/result?p=nnrm@latest)|[![install size](https://packagephobia.com/badge?p=nrm)](https://packagephobia.com/result?p=nrm)|
 
 > [由来](https://www.yunyoujun.cn/posts/nnrm-new-nrm/)
 
