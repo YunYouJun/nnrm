@@ -42,12 +42,14 @@ describe('nnrm use', () => {
     await useRegistry('taobao')
     setTimeout(async () => {
       expect(await getCurrentRegistry()).toBe('taobao')
-    }, 10)
+    }, 50)
 
-    await useRegistry('npm')
     setTimeout(async () => {
-      expect(await getCurrentRegistry()).toBe('npm')
-    }, 20)
+      await useRegistry('npm')
+      setTimeout(async () => {
+        expect(await getCurrentRegistry()).toBe('npm')
+      }, 50)
+    }, 50)
   })
 })
 
