@@ -4,6 +4,7 @@ import path from 'node:path'
 import { yellow } from 'picocolors'
 import { $ } from 'execa'
 import type { Registries, RegistryName } from '../types'
+import { ensureSuffix } from './common'
 
 const NNRM = path.join(process.env.HOME || process.env.USERPROFILE, '.nnrm')
 const NNRM_REGISTRIES = path.join(NNRM, 'registries.json')
@@ -51,8 +52,7 @@ export async function addCustomRegistry(name: RegistryName, url: string, home?: 
   const customRegistries = await getCustomRegistry()
 
   // npm config set registry auto add '/'
-  if (url.slice(-1) !== '/')
-    url += '/'
+  url = ensureSuffix('/', url)
 
   customRegistries[name] = {
     home: home || url,

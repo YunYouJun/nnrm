@@ -15,7 +15,9 @@ import {
   getCustomRegistry,
   removeCustomRegistry,
 } from './registries'
+import { dashLine, ensureSuffix } from './common'
 
+export * from './common'
 export * from './registries'
 
 // init default and custom registries
@@ -29,27 +31,6 @@ export const store: {
 } = {
   pkgManager: 'npm',
   registries: {},
-}
-
-/**
- * generate equal width name with dashline
- * @returns
- */
-function dashline(str: string) {
-  const maxCharWidth
-    = Math.max(...Object.keys(store.registries).map(key => key.length)) + 3
-
-  const line = new Array(Math.max(1, maxCharWidth - str.length)).join('-')
-  return `${str} ${line}`
-}
-
-/**
- * Ensure suffix of a string
- */
-function ensureSuffix(suffix: string, str: string) {
-  if (!str.endsWith(suffix))
-    return str + suffix
-  return str
 }
 
 /**
@@ -72,7 +53,7 @@ export async function getRegistriesList() {
     if (isCurrentRegistry)
       inList = true
     const prefix = isCurrentRegistry ? '*' : ' '
-    const item = `\n ${prefix} ${dashline(key)} ${store.registries[key].registry}`
+    const item = `\n ${prefix} ${dashLine(store.registries, key)} ${store.registries[key].registry}`
     list += isCurrentRegistry ? green(item) : item
   })
 
@@ -159,7 +140,7 @@ export async function listDelayTime() {
   return await Promise.all(
     Object.keys(store.registries).map(async (key) => {
       const delayTime = await getDelayTime(store.registries[key].registry)
-      const item = ` ${dashline(key)} ${delayTime}`
+      const item = ` ${dashLine(store.registries, key)} ${delayTime}`
       console.log(item)
     }),
   )
