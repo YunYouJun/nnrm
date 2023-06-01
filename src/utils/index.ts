@@ -168,13 +168,7 @@ export async function main(pkgManager = 'npm') {
             'nnrm use taobao',
           )}\n`,
         )
-      }
-      else {
-        await setCurrentRegistry(registry, pkgManager)
-        await listRegistries(pkgManager)
-      }
-
-      if (options.l || options.local) {
+      } else if (options.l || options.local) {
         const registryText = `registry=${registries[registry].registry}`
         if (existsSync('.npmrc')) {
           const content = await fs.readFile('.npmrc', 'utf-8')
@@ -185,7 +179,11 @@ export async function main(pkgManager = 'npm') {
         }
         else {
           await fs.writeFile('.npmrc', registryText)
+          await listRegistries(pkgManager)
         }
+      } else {
+        await setCurrentRegistry(registry, pkgManager)
+        await listRegistries(pkgManager)
       }
     })
 
