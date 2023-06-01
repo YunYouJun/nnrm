@@ -4,7 +4,6 @@ English Docs | [中文文档](./README.zh-CN.md)
 
 [![npm](https://img.shields.io/npm/v/nnrm)](https://www.npmjs.com/package/nnrm)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yunyoujun/nnrm)
-[![install size](https://packagephobia.com/badge?p=nnrm@latest)](https://packagephobia.com/result?p=nnrm@latest)
 [![node-current](https://img.shields.io/node/v/nnrm)](https://nodejs.dev/)
 ![npm](https://img.shields.io/npm/dt/nnrm)
 ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/nnrm)
@@ -15,6 +14,9 @@ English Docs | [中文文档](./README.zh-CN.md)
 New npm registry manager.
 
 Use smaller dependencies than [nrm](https://github.com/Pana/nrm).
+
+- **nnrm**: [![install size](https://packagephobia.com/badge?p=nnrm@latest)](https://packagephobia.com/result?p=nnrm@latest)
+- **nrm**: [![install size](https://packagephobia.com/badge?p=nrm)](https://packagephobia.com/result?p=nrm)
 
 > [由来](https://www.yunyoujun.cn/posts/nnrm-new-nrm/)
 
