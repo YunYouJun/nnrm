@@ -38,6 +38,7 @@ describe('nnrm use', () => {
     await setCurrentRegistry(registry, 'npm')
   }
 
+  // use setTimeout to wait `npm config set` `npm config get`
   it('use toggle', async () => {
     await useRegistry('taobao')
     setTimeout(async () => {
