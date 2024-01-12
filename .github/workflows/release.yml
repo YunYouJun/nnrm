@@ -32,6 +32,7 @@ jobs:
       - run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
 
       - run: npx changelogithub # or changelogithub@0.12 if ensure the stable result
         env:
