@@ -7,7 +7,6 @@ English Docs | [中文文档](./README.zh-CN.md)
 [![node-current](https://img.shields.io/node/v/nnrm)](https://nodejs.dev/)
 ![npm](https://img.shields.io/npm/dt/nnrm)
 ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/nnrm)
-![Snyk Vulnerabilities for npm scoped package](https://img.shields.io/snyk/vulnerabilities/npm/nnrm)
 
 > nnrm = new nrm
 
