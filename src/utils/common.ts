@@ -1,12 +1,11 @@
 /**
  * generate equal width name with dashLine
- * @returns
  */
 export function dashLine(registries: Record<string, any>, str: string) {
   const maxCharWidth
     = Math.max(...Object.keys(registries).map(key => key.length)) + 3
 
-  const line = new Array(Math.max(1, maxCharWidth - str.length)).join('-')
+  const line = Array.from({ length: Math.max(1, maxCharWidth - str.length) }).join('-')
   return `${str} ${line}`
 }
 

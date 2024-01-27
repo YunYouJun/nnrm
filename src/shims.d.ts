@@ -1,6 +1,6 @@
 declare namespace NodeJS {
   interface ProcessEnv {
-    HOME: string;
-    USERPROFILE: string;
+    HOME: string
+    USERPROFILE: string
   }
 }

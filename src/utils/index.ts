@@ -35,7 +35,6 @@ export const store: {
 
 /**
  * get default and custom registries
- * @returns
  */
 export async function getAllRegistries() {
   const customRegistries = await getCustomRegistry()
@@ -97,8 +96,6 @@ export async function getCurrentRegistry(pkgManager = 'npm') {
 
 /**
  * https://docs.npmjs.com/cli/v7/commands/npm-config
- * @param pkgManager
- * @returns
  */
 export async function setCurrentRegistry(name: string, pkgManager = 'npm') {
   if (!store.registries[name]) {
@@ -134,7 +131,6 @@ async function getDelayTime(url: string) {
 
 /**
  * list registries delay time
- * @returns
  */
 export async function listDelayTime() {
   return await Promise.all(

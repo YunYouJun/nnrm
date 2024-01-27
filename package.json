@@ -2,7 +2,7 @@
   "name": "nnrm",
   "type": "module",
   "version": "0.4.3",
-  "packageManager": "pnpm@8.6.0",
+  "packageManager": "pnpm@8.14.3",
   "description": "New npm registry manager.",
   "author": {
     "email": "me@yunyoujun.cn",
@@ -52,19 +52,19 @@
     "release": "bumpp --commit --push --tag"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.4",
-    "@vitest/coverage-c8": "^0.31.3",
-    "bumpp": "^9.1.0",
+    "@antfu/eslint-config": "^2.6.3",
+    "@vitest/coverage-c8": "^0.33.0",
+    "bumpp": "^9.3.0",
     "cac": "^6.7.14",
-    "eslint": "^8.41.0",
-    "execa": "^7.1.1",
-    "lint-staged": "^13.2.2",
-    "node-fetch": "^3.3.1",
+    "eslint": "^8.56.0",
+    "execa": "^8.0.1",
+    "lint-staged": "^15.2.0",
+    "node-fetch": "^3.3.2",
     "picocolors": "^1.0.0",
-    "simple-git-hooks": "^2.8.1",
-    "tsup": "^6.7.0",
-    "typescript": "^5.0.4",
-    "vitest": "^0.31.3"
+    "simple-git-hooks": "^2.9.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
