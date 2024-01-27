@@ -10,7 +10,10 @@
     "url": "https://www.yunyoujun.cn"
   },
   "license": "MIT",
-  "repository": "https://github.com/YunYouJun/nnrm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YunYouJun/nnrm"
+  },
   "keywords": [
     "npm",
     "registry",
