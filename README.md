@@ -148,6 +148,8 @@ cac(3.6KB) is smaller than commander(6.8KB). ~~And i love C.C.~~
 
 ### Why [execa](https://github.com/sindresorhus/execa)?
 
+Lock `execa@8` for Node.JS 16.
+
 > [execa vs shelljs](https://www.npmtrends.com/execa-vs-shelljs)
 
 [execa](https://github.com/sindresorhus/execa) is only 8.4KB.

@@ -153,6 +153,8 @@ cac(3.6KB) 相比 commander(6.8KB) 更小。~~并且它的名字取自我喜爱�
 
 ### 为什么使用 [execa](https://github.com/sindresorhus/execa)?
 
+为了 Node.JS 16，锁定 `execa@8`。
+
 > [execa vs shelljs](https://www.npmtrends.com/execa-vs-shelljs)
 
 [execa](https://github.com/sindresorhus/execa) 大小仅仅 8.4KB。
