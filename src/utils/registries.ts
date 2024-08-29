@@ -16,6 +16,7 @@ export async function getCustomRegistry() {
     const registriesText = await fs.readFile(NNRM_REGISTRIES, 'utf-8')
     customRegistries = JSON.parse(registriesText.trim() || '{}')
   }
+  // eslint-disable-next-line unused-imports/no-unused-vars
   catch (e) {
     const msg = `\nWe will create '${yellow(
       NNRM_REGISTRIES,

@@ -142,6 +142,10 @@ export async function listDelayTime() {
   )
 }
 
+async function onLs() {
+  await listRegistries()
+}
+
 /**
  * @param pkgManager npm|yarn
  */
@@ -150,9 +154,6 @@ export async function main(pkgManager = 'npm') {
   store.registries = await getAllRegistries()
   store.pkgManager = pkgManager
 
-  const onLs = async () => {
-    await listRegistries()
-  }
   cli.command('ls', 'List all the registries').action(onLs)
 
   cli

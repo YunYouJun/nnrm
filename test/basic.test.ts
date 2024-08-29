@@ -33,11 +33,11 @@ describe('nnrm ls', () => {
   })
 })
 
-describe('nnrm use', () => {
-  async function useRegistry(registry: string) {
-    await setCurrentRegistry(registry, 'npm')
-  }
+async function useRegistry(registry: string) {
+  await setCurrentRegistry(registry, 'npm')
+}
 
+describe('nnrm use', () => {
   // use setTimeout to wait `npm config set` `npm config get`
   it('use toggle', async () => {
     await useRegistry('taobao')
