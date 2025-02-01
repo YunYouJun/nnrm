@@ -1,10 +1,10 @@
-import { existsSync, promises as fs } from 'node:fs'
-import path from 'node:path'
-
-import process from 'node:process'
-import { yellow } from 'picocolors'
-import { $ } from 'execa'
 import type { Registries, RegistryName } from '../types'
+import { existsSync, promises as fs } from 'node:fs'
+
+import path from 'node:path'
+import process from 'node:process'
+import { $ } from 'execa'
+import { yellow } from 'picocolors'
 import { ensureSuffix } from './common'
 
 const NNRM = path.join(process.env.HOME || process.env.USERPROFILE, '.nnrm')

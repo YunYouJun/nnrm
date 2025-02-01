@@ -1,21 +1,21 @@
 import { existsSync, promises as fs } from 'node:fs'
 
+import { cac } from 'cac'
 import { $ } from 'execa'
-import { green, red, yellow } from 'picocolors'
 import fetch from 'node-fetch'
 
-import { cac } from 'cac'
+import { green, red, yellow } from 'picocolors'
 
 import pkg from '../../package.json'
 
 // init default and custom registries
 import defaultRegistries from '../../registries.json'
+import { dashLine, ensureSuffix } from './common'
 import {
   addCustomRegistry,
   getCustomRegistry,
   removeCustomRegistry,
 } from './registries'
-import { dashLine, ensureSuffix } from './common'
 
 export * from './common'
 export * from './registries'

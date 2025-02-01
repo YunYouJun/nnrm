@@ -173,10 +173,10 @@ You should uninstall `nrm(package)` to use `nrm(command)` with `nnrm(package)`. 
 
 - [npm-config | npm Docs](https://docs.npmjs.com/cli/v7/commands/npm-config)
 
-## [Sponsors](https://sponsors.yunyoujun.cn)
+## [Sponsors](https://www.yunyoujun.cn/sponsors/)
 
 <p align="center">
-  <a href="https://sponsors.yunyoujun.cn">
+  <a href="https://www.yunyoujun.cn/sponsors/">
     <img src='https://cdn.jsdelivr.net/gh/YunYouJun/sponsors/public/sponsors.svg'/>
   </a>
 </p>
