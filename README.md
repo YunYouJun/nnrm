@@ -95,7 +95,7 @@ nnrm remove example
 
 It will be recorded in your `~/.nnrm/registries.json`.
 
-### Default Registires
+### Default Registries
 
 - npm -------- <https://registry.npmjs.org/>
 - yarn ------- <https://registry.yarnpkg.com/>
