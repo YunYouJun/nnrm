@@ -1,7 +1,10 @@
+import { promises as fs } from 'node:fs'
+import os from 'node:os'
+import path from 'node:path'
 import { $ } from 'execa'
 import { beforeAll, describe, expect, it } from 'vitest'
 import registries from '../registries.json'
-import { addCustomRegistry, getAllRegistries, getCurrentRegistry, getRegistriesList, removeCustomRegistry, setCurrentRegistry, store } from '../src/utils'
+import { addCustomRegistry, getAllRegistries, getCurrentRegistry, getLocalRegistry, getRegistriesList, removeCustomRegistry, setCurrentRegistry, store } from '../src/utils'
 
 async function nnrmCommand(...args: string[]) {
   return await $`node dist/index.js ${args.join(' ')}`
@@ -79,5 +82,37 @@ describe('nnrm remove', () => {
     await removeCustomRegistry(customRegistry.name)
     store.registries = await getAllRegistries()
     expect(store.registries[customRegistry.name]).toBeUndefined()
+  })
+})
+
+describe('nnrm local registry', () => {
+  beforeAll(async () => {
+    store.registries = await getAllRegistries()
+    store.pkgManager = 'npm'
+  })
+
+  async function createTmpDir(npmrc?: string) {
+    const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'nnrm-'))
+    if (npmrc !== undefined)
+      await fs.writeFile(path.join(dir, '.npmrc'), npmrc)
+    return dir
+  }
+
+  it('no .npmrc', async () => {
+    expect(await getLocalRegistry(await createTmpDir())).toBeUndefined()
+  })
+
+  it('.npmrc without registry', async () => {
+    expect(await getLocalRegistry(await createTmpDir('save-exact=true\n'))).toBeUndefined()
+  })
+
+  it('.npmrc with known registry', async () => {
+    const dir = await createTmpDir(`save-exact=true\nregistry=${registries.taobao.registry}\n`)
+    expect(await getLocalRegistry(dir)).toBe('taobao')
+  })
+
+  it('.npmrc with unknown registry', async () => {
+    const dir = await createTmpDir('registry=https://example.com/npm')
+    expect(await getLocalRegistry(dir)).toBe('https://example.com/npm')
   })
 })

@@ -115,6 +115,7 @@ It will be recorded in your `~/.nnrm/registries.json`.
 - Asynchronously display source speed test results
 - Colorful console info
 - Automatically display the registry list after each modification, and mark the current registry
+  - When `.npmrc` in the current directory sets `registry`, mark both registries with `(global)` and `(local)`
 
 ## FAQ
 

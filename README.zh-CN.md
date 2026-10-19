@@ -120,6 +120,7 @@ nnrm 相比 nrm 的改进之处：
 - 异步地显示源测速结果
 - 彩色的输出结果
 - 每次修改后自动显示 registry 列表，并标记当前 registry
+  - 当前目录的 `.npmrc` 设置了 `registry` 时，分别以 `(global)` 和 `(local)` 标记全局与本地 registry
 
 ## FAQ
 
